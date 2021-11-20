@@ -12,13 +12,23 @@ Next pass at Fri Jun 01 2021 17:49:29 GMT-0700 (Pacific Daylight Time) for 648 s
 Next pass at Fri Jun 01 2021 19:26:12 GMT-0700 (Pacific Daylight Time) for 643 seconds!
 */
 
-const { fetchMyIP } = require('./iss');
+const { fetchMyIP, fetchCoordsByIP } = require('./iss');
 
-fetchMyIP((error, ip) => {
+let ip = fetchMyIP((error, ip) => {
   if (error) {
     console.log("It didn't work!", error);
     return;
   }
 
   console.log('It worked! Returned IP:', ip);
+  return ip;
 });
+
+fetchCoordsByIP('65.95.215.86', (error, data) => {
+  if (error) {
+    console.log("It didn't work!", error);
+    return;
+  }
+
+  console.log("It worked! Returned coordinates:", data);
+})

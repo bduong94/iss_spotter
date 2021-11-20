@@ -15,15 +15,15 @@ Next pass at Fri Jun 01 2021 19:26:12 GMT-0700 (Pacific Daylight Time) for 643 s
 const { nextISSTimesForMyLocation } = require('./iss');
 
 const printTimes = (passTimes) => {
-  for (let pass of passTimes){
+  for (let pass of passTimes) {
     const dateTime = new Date(0);
     dateTime.setUTCSeconds(pass.risetime);
     console.log(`Next pass at ${dateTime} for ${pass['duration']} seconds!`);
   }
-}
+};
 
 nextISSTimesForMyLocation((error, passTimes) => {
-  if (error){
+  if (error) {
     console.log("It didn't work!", error);
     return;
   }
